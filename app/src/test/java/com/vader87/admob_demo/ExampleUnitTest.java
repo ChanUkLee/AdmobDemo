@@ -1,4 +1,4 @@
-package com.admob.demo;
+package com.vader87.admob_demo;
 
 import org.junit.Test;
 

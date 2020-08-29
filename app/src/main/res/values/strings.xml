@@ -1,9 +1,31 @@
 <resources>
     <string name="app_name">AdmobDemo</string>
     <string name="test_device_id">[YOUR TEST DEVICE ID]</string>
-    <string name="admob_app_id">[YOUR APP ID]</string>
-    <string name="interstitial_ad_unit_id">[YOUR AD UNIT ID]</string>
+    <string name="admob_app_id">ca-app-pub-5107601053118503~2508619128</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="rewarded_ad_unit_id">ca-app-pub-3940256099942544/5224354917</string>
+
+
     <string name="btn_init">Init</string>
     <string name="btn_load">Load</string>
     <string name="btn_show">Show</string>
+
+    <string name="btn_interstitial_load">Load</string>
+    <string name="btn_interstitial_show">Show</string>
+    <string name="btn_rewarded_load">Load</string>
+    <string name="btn_rewarded_show">Show</string>
+
+    <string name="btn_banner">Banner</string>
+    <string name="btn_interstitial">Interstitial</string>
+    <string name="btn_rewarded">Rewarded</string>
+    <string name="btn_native">Native</string>
+
+    <string name="label_banner">Banner Fragment</string>
+    <string name="label_interstitial">Interstitial Fragment</string>
+    <string name="label_rewarded">Rewarded Fragment</string>
+    <string name="label_native">Native Fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
