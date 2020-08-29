@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onRequest() {
-        List<String> testDeviceIds = Arrays.asList("[YOUR TEST DEVICE ID]");
+        List<String> testDeviceIds = Arrays.asList(getString(R.string.test_device_id));
         RequestConfiguration configuration = new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
         MobileAds.setRequestConfiguration(configuration);
     }

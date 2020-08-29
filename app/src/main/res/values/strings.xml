@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">AdmobDemo</string>
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="test_device_id">[YOUR TEST DEVICE ID]</string>
+    <string name="admob_app_id">[YOUR APP ID]</string>
+    <string name="interstitial_ad_unit_id">[YOUR AD UNIT ID]</string>
     <string name="btn_init">Init</string>
     <string name="btn_load">Load</string>
     <string name="btn_show">Show</string>
