@@ -23,8 +23,8 @@ Setting for Admob
 #################
 
 res/values/strings.xml
-test_device_id <= [Add your test device](https://developers.google.com/admob/android/test-ads#add_your_test_device)
-admob_app_id <= Your Admob App Id
-interstitial_ad_unit_id <= Your Interstitial Ad Unit Id or [Test Ad Unit Id](https://developers.google.com/admob/android/test-ads#sample_ad_units)
+- test_device_id <= [Add your test device](https://developers.google.com/admob/android/test-ads#add_your_test_device)
+- admob_app_id <= Your Admob App Id
+- interstitial_ad_unit_id <= Your Interstitial Ad Unit Id or [Test Ad Unit Id](https://developers.google.com/admob/android/test-ads#sample_ad_units)
 
 https://developers.google.com/admob/android/quick-start?hl=en
