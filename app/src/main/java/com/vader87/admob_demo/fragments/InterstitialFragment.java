@@ -1,7 +1,6 @@
 package com.vader87.admob_demo.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +8,21 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.LoadAdError;
 import com.vader87.admob_demo.R;
+import com.vader87.locatlayout.LogcatLayout;
 
 public class InterstitialFragment extends Fragment {
 
+    private final String TAG = "InterstitialFragment";
+
     private InterstitialAd mInterstitialAd = null;
+    private LogcatLayout mLogcatLayout = null;
+
 
     @Override
     public View onCreateView(
@@ -32,6 +35,8 @@ public class InterstitialFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mLogcatLayout = (LogcatLayout)getActivity().findViewById(R.id.log_view_interstitial);
 
         onInit();
 
@@ -53,40 +58,76 @@ public class InterstitialFragment extends Fragment {
     }
 
     private void onInit() {
+        Log("onInit");
         mInterstitialAd = new InterstitialAd(getActivity());
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
-            public void onAdLoaded() {
-                Log.d("MainActivity", "onAdLoaded");            }
+            public void onAdClicked() {
+                Log("onAdClicked");
+            }
+
+            @Override
+            public void onAdClosed() {
+                Log("onAdClosed");
+            }
 
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
-                Log.e("MainActivity", "onAdFailedToLoad " + adError.getMessage());
+                Log("onAdFailedToLoad " + adError.getMessage());
+            }
+
+            @Override
+            public void onAdImpression() {
+                Log("onAdImpression");
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                Log("onAdLeftApplication");
+            }
+
+            @Override
+            public void onAdLoaded() {
+                Log( "onAdLoaded");
+            }
+
+            @Override
+            public void onAdOpened() {
+                Log("onAdOpened");
             }
         });
     }
 
     private void onLoad() {
-        Log.d("MainActivity", "onLoad");
+        Log( "onLoad");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
+    // Make all calls to the Mobile Ads SDK on the main thread.
     // java.lang.IllegalStateException: setAdListener must be called on the main UI thread.
     private void onLoadFromThread() {
-        Log.d("MainActivity", "onLoadFromThread");
+        Log( "onLoadFromThread");
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                onLoad();
             }
         }).start();
     }
 
     private void onShow() {
-        Log.d("MainActivity", "onShow");
+        Log( "onShow");
 
-        if (mInterstitialAd.isLoaded())
+        if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
+        } else {
+            Log("onShow - Is Not Loaded");
+        }
+
+    }
+
+    private void Log(String msg) {
+        mLogcatLayout.d(TAG, msg);
     }
 }

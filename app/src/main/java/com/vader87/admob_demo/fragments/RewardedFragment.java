@@ -5,11 +5,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.os.Looper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
@@ -20,7 +25,11 @@ import com.google.android.gms.ads.rewarded.RewardedAdCallback;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.vader87.admob_demo.R;
 
+import org.w3c.dom.Text;
+
 public class RewardedFragment extends Fragment {
+
+    private final String TAG = "RewardedFragment";
 
     private RewardedAd mRewardedAd = null;
 
@@ -56,46 +65,64 @@ public class RewardedFragment extends Fragment {
     }
 
     private void onInit() {
+        Log("onInit");
         mRewardedAd = new RewardedAd(getActivity(), getString(R.string.rewarded_ad_unit_id));
     }
 
     private void onLoad() {
+        Log("onLoad");
         mRewardedAd.loadAd(new AdRequest.Builder().build(), new RewardedAdLoadCallback(){
             @Override
             public void onRewardedAdLoaded() {
-                Log.d("MainActivity", "onRewardedAdLoaded");
+                Log( "onRewardedAdLoaded");
             }
 
             @Override
             public void onRewardedAdFailedToLoad(LoadAdError adError) {
-                Log.d("MainActivity", "onRewardedAdFailedToLoad " + adError.getMessage());
+                Log("onRewardedAdFailedToLoad " + adError.getMessage());
             }
         });
     }
 
     private void onShow() {
+        Log.d(TAG, "onShow");
         if (mRewardedAd.isLoaded()) {
             mRewardedAd.show(getActivity(), new RewardedAdCallback() {
                 @Override
                 public void onRewardedAdOpened() {
-                    Log.d("MainActivity", "onRewardedAdOpened");
+                    Log( "onRewardedAdOpened");
                 }
 
                 @Override
                 public void onRewardedAdClosed() {
-                    Log.d("MainActivity", "onRewardedAdClosed");
+                    Log("onRewardedAdClosed");
                 }
 
                 @Override
                 public void onUserEarnedReward(@NonNull RewardItem reward) {
-                    Log.d("MainActivity", "onUserEarnedReward " + reward.getType() + " / " + reward.getAmount());
+                    Log("onUserEarnedReward " + reward.getType() + " / " + reward.getAmount());
                 }
 
                 @Override
                 public void onRewardedAdFailedToShow(AdError adError) {
-                    Log.d("MainActivity", "onRewardedAdFailedToShow " + adError.getMessage());
+                    Log("onRewardedAdFailedToShow " + adError.getMessage());
                 }
             });
+        } else {
+            Log("onShow - Is Not Loaded");
         }
+    }
+
+    private void Log(String msg) {
+        if (Looper.myLooper() == Looper.getMainLooper())
+        {
+
+        }
+        else
+        {
+            Log.e(TAG, "Thread Exception");
+        }
+
+        Log.d(TAG, msg);
     }
 }

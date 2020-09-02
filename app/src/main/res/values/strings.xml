@@ -3,7 +3,7 @@
     <string name="test_device_id">[YOUR TEST DEVICE ID]</string>
     <string name="admob_app_id">ca-app-pub-5107601053118503~2508619128</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ad_unit_id">ca-app-pub-5107601053118503/9976425817</string>
     <string name="rewarded_ad_unit_id">ca-app-pub-3940256099942544/5224354917</string>
 
 
@@ -25,7 +25,4 @@
     <string name="label_interstitial">Interstitial Fragment</string>
     <string name="label_rewarded">Rewarded Fragment</string>
     <string name="label_native">Native Fragment</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
